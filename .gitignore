@@ -17,3 +17,4 @@ Homestead.yaml
 # /.fleet
 # /.idea
 /.vscode
+.vercel

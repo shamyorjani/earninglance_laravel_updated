@@ -50,7 +50,7 @@ class DashboardController extends Controller
 
             $user_payments_status_count = UserPayments::where('status', 0)->count();
             $user_payments_user_count = UserPayments::where('username', $user->username)->count();
-            DB::statement("SET SQL_MODE=''");
+            // DB::statement("SET SQL_MODE=''");
             $userearning_total = WithdrawalRequest::where([
                 ['username', '=', $user->username],
                 ['status', '=', 1],
@@ -134,7 +134,7 @@ class DashboardController extends Controller
             $user_payments_status_count = UserPayments::where('status', 0)->count();
             $user_payments_user_count = UserPayments::where('username', $user->username)->count();
 
-            DB::statement("SET SQL_MODE=''");
+            // DB::statement("SET SQL_MODE=''");
             $userearning_total = WithdrawalRequest::where([
                 ['username', '=', $user->username],
                 ['status', '=', 1],

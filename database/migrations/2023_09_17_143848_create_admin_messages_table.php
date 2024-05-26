@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('admin_messages', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->string('username');
             $table->string('message');
             $table->string('date');

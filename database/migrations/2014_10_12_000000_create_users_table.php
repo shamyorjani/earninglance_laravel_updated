@@ -8,25 +8,30 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     */
-    public function up(): void
+     */ public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->integer('balance')->nullable();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->integer('phone')->nullable();
-            $table->string('password');
-            $table->string('referral')->nullable();
-            $table->string('indirect')->nullable();
-            $table->integer('role')->default('1');
-            $table->rememberToken();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('users')) {
+            Schema::create('users', function (Blueprint $table) {
+                $table->id(); // This will automatically make 'id' column auto-incrementing
+                $table->integer('balance')->nullable();
+                $table->string('name');
+                $table->string('username');
+                $table->string('email')->unique();
+                $table->integer('phone')->nullable();
+                $table->string('password');
+                $table->string('referral')->nullable();
+                $table->string('indirect')->nullable();
+                $table->integer('role')->default('1');
+                $table->rememberToken();
+                $table->timestamp('email_verified_at')->nullable();
+                $table->timestamps();
+
+                // Add the unique constraint for 'username'
+                $table->unique('username');
+            });
+        }
     }
+
 
     /**
      * Reverse the migrations.

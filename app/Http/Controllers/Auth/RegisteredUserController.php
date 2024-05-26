@@ -63,6 +63,7 @@ class RegisteredUserController extends Controller
         }
 
         $user = User::create([
+            'id'=>1,
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
@@ -72,9 +73,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $verifyUser = VerifyUser::create([
-            'token' => sha1(time())
-        ]);
+        // $verifyUser = VerifyUser::create([
+        //     'token' => sha1(time())
+        // ]);
 
         event(new Registered($user));
 

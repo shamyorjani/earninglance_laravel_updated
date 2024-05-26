@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('admin_messages', function (Blueprint $table) {
-            $table->string('username');
+            if (!Schema::hasColumn('admin_messages', 'username')) {
+                $table->string('username')->nullable();
+            }
         });
     }
 
