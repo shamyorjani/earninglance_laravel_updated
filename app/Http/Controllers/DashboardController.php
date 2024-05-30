@@ -60,7 +60,8 @@ class DashboardController extends Controller
                 ->groupBy('method_id')
                 ->sum('amount');
 
-            $user_payments = UserPayments::where('username', $user->username);
+            $user_payments = UserPayments::where('username',
+            $user->username);
             if ($user_payments != null) {
                 $user_payments_plan_id = $id;
                 $user_plan = Plans::find($user_payments_plan_id);
